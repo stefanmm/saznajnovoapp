@@ -19,18 +19,15 @@
     </v-app-bar>
 
     <v-main>
-      
-
       <v-navigation-drawer v-model="drawer" fixed temporary width="350">
         <Drawer />
-        
       </v-navigation-drawer>
 
       <router-view />
-
+      <BottomNav />
       <Footer />
     </v-main>
-  <v-offline @detected-condition="amIOnline"></v-offline>
+    <v-offline @detected-condition="amIOnline"></v-offline>
     <v-bottom-sheet v-model="onLine" hide-overlay>
       <v-card tile>
         <v-list>
@@ -55,6 +52,7 @@
 <script>
 import Drawer from "@/components/Drawer.vue";
 import Footer from "@/components/Footer.vue";
+import BottomNav from "@/components/BottomNav.vue";
 import VOffline from "v-offline";
 
 export default {
@@ -63,6 +61,7 @@ export default {
     Drawer,
     Footer,
     VOffline,
+    BottomNav,
   },
   data() {
     return {
