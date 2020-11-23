@@ -66,6 +66,7 @@
               class="postContentText"
             ></div>
 
+            <!-- -->
             <v-card
               class="mt-n12 mx-auto text-center"
               elevation="6"
@@ -80,6 +81,7 @@
                 </v-icon></v-card-text
               >
             </v-card>
+            <!--  -->
           </v-card>
         </v-row>
       </v-container>
