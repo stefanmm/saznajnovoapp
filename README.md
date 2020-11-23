@@ -27,16 +27,16 @@ Planned:
 ![snapp image](https://i.imgur.com/djxibda.png)
 
 ## Notes :thought_balloon:
-1) Env file
+1) Env file:
 Inside .env file add URL of your WP website like this:
 ```VUE_APP_MAINURL=https://example.com/wp-json/wp/v2```
 or if you changed API base change this accordingly.
 
-2) Open full article
+2) Open full article:
 I restricted content in my REST API so the "posts" content.rendered will return only part of the content. For that purpose I added inside SingleView.vue file a link (v-card) that points to the article. You can remove it.
 
-3) Translation
+3) Translation:
 App is coded in Serbian, you would have to change strings manually :neutral_face:
 
-4) Parsing content
+4) Parsing content:
 I am using "v-html" to render articles content (SingleView.vue) because I am loading my own posts only. Beware of XSS if you plan to parse someone else's content.
