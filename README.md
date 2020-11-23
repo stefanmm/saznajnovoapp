@@ -37,3 +37,6 @@ I restricted content in my REST API so the "posts" content.rendered will return 
 
 3) Translation
 App is coded in Serbian, you would have to change strings manually :neutral_face:
+
+4) Parsing content
+I am using "v-html" to render articles content (SingleView.vue) because I am loading my own posts only. Beware of XSS if you plan to parse someone else's content.
