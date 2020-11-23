@@ -1,5 +1,5 @@
 # saznajnovoapp
-This is my first Vue.js, so feel free to improve it. Thank you! :)
+This is my first Vue.js app, so feel free to improve it. Thank you! :)
 
 ## Features :cake:
 - Vue.js V2
@@ -23,20 +23,16 @@ Planned:
 - Bottom navigation
 - Favourite list of articles
 
-## Showcase
+## Showcase :sparkles:
 ![snapp image](https://i.imgur.com/djxibda.png)
 
 ## Notes :thought_balloon:
-1) Env file:
-Inside .env file add URL of your WP website like this:
+1) Inside .env file add URL of your WP website like this:
 ```VUE_APP_MAINURL=https://example.com/wp-json/wp/v2```
 or if you changed API base change this accordingly.
 
-2) Open full article:
-I restricted content in my REST API so the "posts" content.rendered will return only part of the content. For that purpose I added inside SingleView.vue file a link (v-card) that points to the article. You can remove it.
+2) I restricted content in my REST API so the "posts" content.rendered will return only part of the content. For that purpose I added a link (v-card inside SingleView.vue) to the article. You can remove it.
 
-3) Translation:
-App is coded in Serbian, you would have to change strings manually :neutral_face:
+3) App is coded in Serbian, you would have to change strings manually :neutral_face:
 
-4) Parsing content:
-I am using "v-html" to render articles content (SingleView.vue) because I am loading my own posts only. Beware of XSS if you plan to parse someone else's content.
+4) I am using "v-html" to render article content (SingleView.vue) because I am loading my own posts only. Beware of XSS if you plan to parse someone else's content! For comments I am using text interpolation so don't worry here.
