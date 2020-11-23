@@ -23,6 +23,9 @@ Planned:
 - Bottom navigation
 - Favourite list of articles
 
+## Showcase
+![snapp image](https://i.imgur.com/djxibda.png)
+
 ## Notes :thought_balloon:
 1) Env file
 Inside .env file add URL of your WP website like this:
