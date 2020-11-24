@@ -90,6 +90,7 @@ export default {
   props: {
     categoryid: {type: Number, default: 0},
     tagid: {type: Number, default: 0},
+    postids: {type: Array, default:  () => []},
   },
   mounted() {
     this.getPosts(); // get posts on view load
@@ -125,10 +126,18 @@ export default {
     getPosts() {
       // If category/tag IDs are passed then add it to the postData
       // so we can do the query with them
+      
       if( this.categoryid && this.categoryid > 0 ){
         this.postsData.categories = this.categoryid;
       } else if ( this.tagid && this.tagid > 0 ){
         this.postsData.tags = this.tagid;
+      }
+      console.log(this.postids);
+     
+
+      if (this.postids && this.postids.length > 0  ) {
+        this.postsData.include = this.postids;
+        
       }
      
       window.scrollTo(0, 0); // Scroll to top when we ask for new posts

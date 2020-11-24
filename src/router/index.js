@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import SingleView from '../views/SingleView.vue'
 import CategoryList from '../views/CategoryList.vue'
 import TagList from '../views/TagList.vue'
+import Favorites from '../views/Favorites.vue'
 
 
 Vue.use(VueRouter)
@@ -37,8 +38,9 @@ const routes = [
   {
     path: '/favorites',
     name: 'Omiljeno',
+    component: Favorites,
+    props: true,
    
-    component: () => import('../views/Favorites.vue')
   }
 ]
 
