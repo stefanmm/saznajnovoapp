@@ -43,6 +43,7 @@
             <v-icon small class="mr-2"> mdi-calendar </v-icon>
             {{ postData.date | luxon({ output: "dd.MM.yyyy." }) }}
             <v-spacer></v-spacer>
+            <LikeThis :id="postData.id" />
             <v-btn
               icon
               @click="
@@ -211,11 +212,13 @@
   
 <script>
 import Related from "../components/RelatedPosts";
+import LikeThis from "../components/LikeThis";
 
 export default {
   name: "SingleView",
   components: {
     Related,
+    LikeThis,
   },
   data() {
     return {

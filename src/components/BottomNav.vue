@@ -13,7 +13,7 @@
       <v-icon>mdi-home</v-icon>
     </v-btn>
 
-    <v-btn to="/favorite">
+    <v-btn to="/favorites">
       <span>Omiljeno</span>
 
       <v-icon>mdi-heart</v-icon>

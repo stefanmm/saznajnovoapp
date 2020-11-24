@@ -60,6 +60,8 @@
             <v-btn color="primary" outlined :to="'/single/' + post.id">
               Pročitaj
             </v-btn>
+            <v-spacer></v-spacer>
+            <LikeThis :id="post.id" />
           </v-card-actions>
         </v-card>
       </v-col>
@@ -82,7 +84,7 @@
   
 <script>
 import pagination from "./pagination.vue";
-
+import LikeThis from "./LikeThis";
 
 export default {
   props: {
@@ -94,10 +96,11 @@ export default {
   },
   components: {
     pagination: pagination,
+    LikeThis,
   },
   data() {
     return {
-      
+     
       postsLoading: true, // by default on page load posts will be in state of loading
       postsUrl: process.env.VUE_APP_MAINURL+"/posts?_embed", // use ?_embed so we can get featured img etc.
       posts: [],
