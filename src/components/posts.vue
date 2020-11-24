@@ -26,18 +26,24 @@
             gradient="to top, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 60%"
           >
             <div class="postlist__categories-holder">
-            <v-chip
-              v-for="(kategorija, index) in post._embedded['wp:term']['0']"
-              :key="index"
-              class="ml-2 postlist__single-cat"
-              color="primary"
-              label
-              small
-              link
-              :to="{ name: 'Kategorija', params: { catid: parseInt(kategorija.id), catname: kategorija.name } }"
-            >
-              {{ kategorija.name }}
-            </v-chip>
+              <v-chip
+                v-for="(kategorija, index) in post._embedded['wp:term']['0']"
+                :key="index"
+                class="ml-2 postlist__single-cat"
+                color="primary"
+                label
+                small
+                link
+                :to="{
+                  name: 'Kategorija',
+                  params: {
+                    catid: parseInt(kategorija.id),
+                    catname: kategorija.name,
+                  },
+                }"
+              >
+                {{ kategorija.name }}
+              </v-chip>
             </div>
             <v-card-title
               class=""
@@ -47,7 +53,13 @@
           </v-img>
 
           <v-card-subtitle class="pb-0">
-            <v-icon small> mdi-account </v-icon> Stefan Marjanov |
+            <v-icon small> mdi-account </v-icon>
+            <span
+              v-for="(author, index) in post._embedded.author"
+              :key="index"
+              >{{ author.name }}</span
+            >
+            |
             <v-icon small> mdi-calendar </v-icon>
             {{ post.date | luxon({ output: "dd.MM.yyyy." }) }}
           </v-card-subtitle>
@@ -88,9 +100,10 @@ import LikeThis from "./LikeThis";
 
 export default {
   props: {
-    categoryid: {type: Number, default: 0},
-    tagid: {type: Number, default: 0},
-    postids: {type: Array, default:  () => []},
+    categoryid: { type: Number, default: 0 },
+    tagid: { type: Number, default: 0 },
+    postids: { type: Array, default: () => [] },
+    searchterm: {type: String, default: ""},
   },
   mounted() {
     this.getPosts(); // get posts on view load
@@ -101,16 +114,14 @@ export default {
   },
   data() {
     return {
-     
       postsLoading: true, // by default on page load posts will be in state of loading
-      postsUrl: process.env.VUE_APP_MAINURL+"/posts?_embed", // use ?_embed so we can get featured img etc.
+
       posts: [],
-      
+      postsUrl: process.env.VUE_APP_MAINURL + "/posts?_embed", // use ?_embed so we can get featured img etc.
       // Set the default params to pass to WP REST
       postsData: {
         per_page: 10,
         page: 1,
-        
       },
       pagination: {
         prevPage: "",
@@ -127,19 +138,25 @@ export default {
       // If category/tag IDs are passed then add it to the postData
       // so we can do the query with them
       
-      if( this.categoryid && this.categoryid > 0 ){
+
+      if (this.categoryid && this.categoryid > 0) {
         this.postsData.categories = this.categoryid;
-      } else if ( this.tagid && this.tagid > 0 ){
+      } else if (this.tagid && this.tagid > 0) {
         this.postsData.tags = this.tagid;
       }
-      console.log(this.postids);
-     
 
-      if (this.postids && this.postids.length > 0  ) {
+      if (this.postids && this.postids.length > 0) {
         this.postsData.include = this.postids;
-        
       }
-     
+      
+      if(this.searchterm && this.searchterm != "") {
+        this.postsData.search = this.searchterm;
+        this.postsData.orderby = "relevance";
+        this.postsData.order = "asc";
+      }
+
+      
+        
       window.scrollTo(0, 0); // Scroll to top when we ask for new posts
       this.postsLoading = true;
       this.$http
@@ -178,7 +195,7 @@ export default {
 
 <style scoped>
 .postlist__categories-holder {
-position: absolute  ;
-top: 10px;
+  position: absolute;
+  top: 10px;
 }
 </style>

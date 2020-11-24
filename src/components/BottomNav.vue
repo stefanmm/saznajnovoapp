@@ -1,8 +1,9 @@
 <template>
   <div id="bottomNav">
   <v-bottom-navigation
-   
-    color="primary"
+   v-model="value"
+   :background-color="navBgcolor"
+    color="white"
     fixed	
 
     shift
@@ -28,3 +29,24 @@
   </v-bottom-navigation>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+value: 0,
+    }
+    },
+  computed: {
+      navBgcolor () {
+        switch (this.value) {
+          case 0: return 'blue'
+          case 1: return 'red'
+          case 2: return 'green'
+          case 3: return 'indigo'
+          default: return 'blue'
+        }
+      },
+}
+}
+</script>

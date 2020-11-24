@@ -5,6 +5,7 @@ import SingleView from '../views/SingleView.vue'
 import CategoryList from '../views/CategoryList.vue'
 import TagList from '../views/TagList.vue'
 import Favorites from '../views/Favorites.vue'
+import Search from '../views/Search.vue'
 
 
 Vue.use(VueRouter)
@@ -41,7 +42,14 @@ const routes = [
     component: Favorites,
     props: true,
    
-  }
+  },
+  {
+    path: '/search',
+    name: 'Pretraga',
+    component: Search,
+    props: true,
+   
+  },
 ]
 
 const router = new VueRouter({

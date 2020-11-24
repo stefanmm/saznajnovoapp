@@ -38,7 +38,11 @@
       <v-container>
         <v-row>
           <v-subheader class="px-3 text-center full-width">
-            <v-icon small class="mr-2"> mdi-account </v-icon> Stefan Marjanov
+            <v-icon small class="mr-2"> mdi-account </v-icon> 
+            <span
+              v-for="(author, index) in postData._embedded.author"
+              :key="index"
+              >{{ author.name }}</span>
             <v-icon small> mdi-circle-small </v-icon>
             <v-icon small class="mr-2"> mdi-calendar </v-icon>
             {{ postData.date | luxon({ output: "dd.MM.yyyy." }) }}

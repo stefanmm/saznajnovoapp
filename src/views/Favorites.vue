@@ -13,7 +13,6 @@
       <v-alert
         class="text-center mt-6 text-h6"
         v-else
-        
         icon="mdi-heart-broken"
         type="warning"
         outlined
@@ -34,12 +33,12 @@ export default {
     return {
       hasLikedPosts: false,
       likedPosts: [],
-      componentKey: 0,
+   
     };
   },
   mounted() {
     const likedPosts = JSON.parse(localStorage.getItem("likedPosts"));
-    console.log(likedPosts.length);
+
     if (likedPosts && likedPosts.length > 0) {
       this.hasLikedPosts = true;
       this.likedPosts = likedPosts;
