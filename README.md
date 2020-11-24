@@ -26,7 +26,8 @@ Planned (by priority):
 - Google ads
 
 ## Showcase :sparkles:
-![snapp image](https://i.imgur.com/djxibda.png)
+![snapp images](https://i.imgur.com/SwdCRi0.jpg)
+[Previous version](https://i.imgur.com/djxibda.png)
 
 ## Notes :thought_balloon:
 1) I made this app for my own blog. Some parts are coded specifically for my blog so it will not work out-of-box (probably). I will make this more universal in future.
