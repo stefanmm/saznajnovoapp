@@ -17,10 +17,10 @@ This is my first Vue.js app, so feel free to improve it. Thank you! :)
 - Dark mode (localStorage)
 - API request caching (Axios)
 - Network connection monitoring [v-offline](https://www.npmjs.com/package/v-offline)
-
-Planned (by priority):
 - Bottom navigation
 - Favorite list of articles
+
+Planned (by priority):
 - Search posts
 - Google analytics
 - Google ads
