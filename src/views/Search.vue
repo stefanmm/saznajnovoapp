@@ -10,7 +10,7 @@
       <v-form lazy-validation v-model="valid" @submit.prevent="fetchResults">
         <v-container>
           <v-row>
-            <v-col cols="12" sm="6">
+            <v-col cols="12">
               <v-text-field
                 v-model="term"
                 label="Pretraži"

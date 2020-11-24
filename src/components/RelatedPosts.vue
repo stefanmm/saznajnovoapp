@@ -1,8 +1,6 @@
 <template>
   <div class="relatedposts mb-4">
-    <v-overlay :value="overlay">
-      <v-progress-circular indeterminate size="64"></v-progress-circular>
-    </v-overlay>
+    
     <v-container class="pa-0" v-if="loadingRelatedPosts">
       <v-row no-gutters>
         <v-col cols="12">
@@ -24,10 +22,8 @@
             class="ma-2"
             width="300"
             link
-            @click="
-              overlay = !overlay;
-              $router.push({ path: `/single/${post.id}` });
-            "
+            :to='"/single/"+post.id'
+           
           >
             <v-img
               :aspect-ratio="1.9047619"
@@ -53,7 +49,7 @@ export default {
 
   data() {
     return {
-      overlay: false,
+     
       loadingRelatedPosts: true,
       noRelated: false,
       postsUrl: process.env.VUE_APP_MAINURL+"/posts?_embed&tags=" +
@@ -62,7 +58,6 @@ export default {
         this.cats,
       postData: {
         per_page: 8,
-        offset: 1, // do not return current post
         exclude: this.thisid, // exclude current post from related
       },
 
