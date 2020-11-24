@@ -1,7 +1,7 @@
 <template>
   <div id="bottomNav">
   <v-bottom-navigation
-    v-model="currentTab"
+   
     color="primary"
     fixed	
 
