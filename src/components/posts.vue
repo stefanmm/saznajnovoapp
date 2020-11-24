@@ -104,6 +104,8 @@ export default {
     tagid: { type: Number, default: 0 },
     postids: { type: Array, default: () => [] },
     searchterm: {type: String, default: ""},
+    sortby: {type: String, default: "relevance"},
+    sort: {type: String, default: "asc"},
   },
   mounted() {
     this.getPosts(); // get posts on view load
@@ -151,8 +153,8 @@ export default {
       
       if(this.searchterm && this.searchterm != "") {
         this.postsData.search = this.searchterm;
-        this.postsData.orderby = "relevance";
-        this.postsData.order = "asc";
+        this.postsData.orderby = this.sortby;
+        this.postsData.order = this.sort;
       }
 
       
