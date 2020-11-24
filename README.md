@@ -19,7 +19,7 @@ This is my first Vue.js app, so feel free to improve it. Thank you! :)
 - Network connection monitoring [v-offline](https://www.npmjs.com/package/v-offline)
 - Bottom navigation
 - Favorite list of articles
-- Search posts
+- Search posts (sort, order)
 
 Planned (by priority):
 - Google analytics
