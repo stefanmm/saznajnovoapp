@@ -10,6 +10,18 @@
         ></v-skeleton-loader>
       </v-col>
     </v-row>
+    <v-row v-if="noPosts">
+       <v-col cols="12">
+      <v-alert
+        class="text-center mt-6 text-h6"
+        icon="mdi-emoticon-sad-outline"
+        type="warning"
+        outlined
+        border="top"
+        >Nema rezultata za traženi kriterijum</v-alert
+      >
+       </v-col>
+    </v-row>
     <v-row v-if="!postsLoading">
       <v-col
         v-for="(post, index) in posts"
@@ -103,9 +115,9 @@ export default {
     categoryid: { type: Number, default: 0 },
     tagid: { type: Number, default: 0 },
     postids: { type: Array, default: () => [] },
-    searchterm: {type: String, default: ""},
-    sortby: {type: String, default: "relevance"},
-    sort: {type: String, default: "asc"},
+    searchterm: { type: String, default: "" },
+    sortby: { type: String, default: "relevance" },
+    sort: { type: String, default: "asc" },
   },
   mounted() {
     this.getPosts(); // get posts on view load
@@ -117,7 +129,7 @@ export default {
   data() {
     return {
       postsLoading: true, // by default on page load posts will be in state of loading
-
+      noPosts: false,
       posts: [],
       postsUrl: process.env.VUE_APP_MAINURL + "/posts?_embed", // use ?_embed so we can get featured img etc.
       // Set the default params to pass to WP REST
@@ -139,7 +151,6 @@ export default {
     getPosts() {
       // If category/tag IDs are passed then add it to the postData
       // so we can do the query with them
-      
 
       if (this.categoryid && this.categoryid > 0) {
         this.postsData.categories = this.categoryid;
@@ -150,23 +161,25 @@ export default {
       if (this.postids && this.postids.length > 0) {
         this.postsData.include = this.postids;
       }
-      
-      if(this.searchterm && this.searchterm != "") {
+
+      if (this.searchterm && this.searchterm != "") {
         this.postsData.search = this.searchterm;
         this.postsData.orderby = this.sortby;
         this.postsData.order = this.sort;
       }
 
-      
-        
       window.scrollTo(0, 0); // Scroll to top when we ask for new posts
       this.postsLoading = true;
       this.$http
         .get(this.postsUrl, { params: this.postsData })
         .then((response) => {
-          this.posts = response.data;
-          this.configPagination(response.headers); // Change the pagination state
-
+          if (response.data.length != 0) {
+            this.posts = response.data;
+            this.configPagination(response.headers); // Change the pagination state
+            this.noPosts = false;
+          } else {
+            this.noPosts = true;
+          }
           this.postsLoading = false; // Posts loaded, change the flag
         })
         .catch((error) => {

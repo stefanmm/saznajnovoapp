@@ -9,8 +9,8 @@
     <v-container>
       <v-form lazy-validation v-model="valid" @submit.prevent="fetchResults">
         <v-container>
-           <v-row>
-            <v-col cols="6">
+           <v-row >
+            <v-col cols="6"  class="py-0">
               <v-select
                 v-model="sortPosts"
                
@@ -24,7 +24,7 @@
                 solo
               ></v-select>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="6"  class="py-0">
               <v-select
                 v-model="orderPosts"
                
@@ -40,7 +40,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12">
+            <v-col cols="12"  class="py-0">
               <v-text-field
                 v-model="term"
                 label="Pretraži"
@@ -78,7 +78,7 @@ export default {
 
   data() {
     return {
-      valid: true,
+      valid: false,
       term: "",
       fetch: false,
       reloadPosts: null,
@@ -93,10 +93,11 @@ export default {
           { name: 'Vreme ažuriranja', value: 'modified' },
           { name: 'Naslov', value: 'title' },
         ],
-        orderPosts: { name: 'Uzlazno', value: 'asc' },
+        orderPosts: { name: 'Uzlazno', value: 'desc' },
         orderPostsList: [
-          { name: 'Uzlazno', value: 'asc' },
           { name: 'Silazno', value: 'desc' },
+          { name: 'Uzlazno', value: 'asc' },
+          
           
         ],
     };
@@ -104,7 +105,10 @@ export default {
   mounted() {},
   methods: {
     fetchResults: function () {
-      this.reloadPosts = Date.now();
+      if (this.valid && this.term != "") {
+        this.reloadPosts = Date.now();
+      }
+      
     },
   },
 };
