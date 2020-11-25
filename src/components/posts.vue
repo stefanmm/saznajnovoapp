@@ -11,16 +11,16 @@
       </v-col>
     </v-row>
     <v-row v-if="noPosts">
-      <v-col cols="12">
-        <v-alert
-          class="text-center mt-6 text-h6"
-          icon="mdi-emoticon-sad-outline"
-          type="warning"
-          outlined
-          border="top"
-          >Nema rezultata za traženi kriterijum</v-alert
-        >
-      </v-col>
+       <v-col cols="12">
+      <v-alert
+        class="text-center mt-6 text-h6"
+        icon="mdi-emoticon-sad-outline"
+        type="warning"
+        outlined
+        border="top"
+        >Nema rezultata za traženi kriterijum</v-alert
+      >
+       </v-col>
     </v-row>
     <v-row v-if="!postsLoading">
       <v-col

@@ -5,8 +5,9 @@ import router from './router'
 import posts from './components/posts.vue';
 import axios from 'axios'
 import VueLuxon from "vue-luxon";
-import { cacheAdapterEnhancer } from 'axios-extensions';
 
+
+import { cacheAdapterEnhancer } from 'axios-extensions';
 
 Vue.config.productionTip = false
 
@@ -30,11 +31,10 @@ Vue.directive('plaintext', {
 });
 
 Vue.use(VueLuxon);
-
-
 new Vue({
  vuetify,
  router,
+
  render: h => h(App)
 }).$mount('#app')
 
