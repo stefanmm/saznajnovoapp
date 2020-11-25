@@ -22,8 +22,7 @@ This is my first Vue.js app, so feel free to improve it. Thank you! :)
 - Search posts (sort, order)
 
 Planned (by priority):
-- Google analytics
-- Google ads
+- Nothing for now... suggestions?
 
 ## Showcase :sparkles:
 ![snapp images](https://i.imgur.com/SwdCRi0.jpg)
