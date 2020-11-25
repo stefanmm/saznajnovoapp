@@ -12,7 +12,7 @@
       </v-row>
     </v-container>
 
-    <v-container class="pa-0" v-if="sliderLoaded">
+    <v-container class="pa-0" v-if="sliderLoaded && featuredPosts.length > 0">
       <v-row no-gutters>
         <v-responsive :aspect-ratio="1.9047619">
           <v-carousel cycle dark height="100%" interval="2500" hide-delimiters>

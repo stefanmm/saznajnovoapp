@@ -24,7 +24,7 @@
           <v-img
             :aspect-ratio="1.9047619"
             class="white--text align-end"
-            :src="postData._embedded['wp:featuredmedia']['0'].source_url"
+            :src="postData._embedded['wp:featuredmedia'] ? postData._embedded['wp:featuredmedia']['0'].source_url : require('@/assets/noimage.jpg')"
             gradient="to top, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0) 60%"
           >
             <p
@@ -114,7 +114,7 @@
               {{ kategorija.name }}
             </v-chip>
           </div>
-          <div class="pa-2 full-width">
+          <div class="pa-2 full-width" v-if="postData._embedded['wp:term']['1'].length > 0">
             <v-icon small class="mr-2"> mdi-tag </v-icon>
             <v-chip
               v-for="(oznaka, index) in postData._embedded['wp:term']['1']"
@@ -330,6 +330,10 @@ export default {
   height: 100%;
 }
 .postContentText img {
+  width: 100%;
+  height: auto;
+}
+.postContentText video {
   width: 100%;
   height: auto;
 }

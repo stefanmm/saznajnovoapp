@@ -27,7 +27,7 @@
           >
             <v-img
               :aspect-ratio="1.9047619"
-              :src="post._embedded['wp:featuredmedia']['0'].source_url"
+              :src="post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia']['0'].source_url : require('@/assets/noimage.jpg')"
             >
             </v-img>
             <v-card-text

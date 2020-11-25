@@ -34,7 +34,7 @@
         <v-card class="mx-auto" max-width="400" elevation="3">
           <v-img
             class="white--text align-end"
-            :src="post._embedded['wp:featuredmedia']['0'].source_url"
+            :src="post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia']['0'].source_url : require('@/assets/noimage.jpg')"
             gradient="to top, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 60%"
           >
             <div class="postlist__categories-holder">
